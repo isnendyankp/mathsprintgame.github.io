@@ -89,9 +89,9 @@ function getRadioValue() {
   radioInputs.forEach((radioInput) => {
     if (radioInput.checked) {
       radioValue = radioInput.value;
-      return radioValue;
     }
   });
+  return radioValue;
 }
 
 // Form that decides amount of Questions
@@ -114,4 +114,4 @@ startForm.addEventListener('click', () => {
 });
 
 // Event Listeners
-startForm.addEventListener('click', selectQuestionAmount);
+startForm.addEventListener('submit', selectQuestionAmount);
