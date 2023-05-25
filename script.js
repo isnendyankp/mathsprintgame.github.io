@@ -83,7 +83,10 @@ function createEquations() {
 //   itemContainer.appendChild(bottomSpacer);
 // }
 
-
+// Form that decides amount of Questions
+function selectQuestionAmount(e) {
+  e.preventDefault();
+}
 
 // Switch selected input styling
 startForm.addEventListener('click', () => {
