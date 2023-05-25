@@ -83,6 +83,8 @@ function createEquations() {
 //   itemContainer.appendChild(bottomSpacer);
 // }
 
+
+
 // Switch selected input styling
 startForm.addEventListener('click', () => {
   radioContainers.forEach((radioEl) => {
@@ -94,3 +96,6 @@ startForm.addEventListener('click', () => {
     }
   });
 });
+
+// Event Listeners
+startForm.addEventListener('click', selectQuestionAmount);
