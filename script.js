@@ -32,12 +32,19 @@ const wrongFormat = [];
 
 // Scroll
 
+// Get Random Number up to a certain amount
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 // Create Correct/Incorrect Random Equations
 function createEquations() {
   // Randomly choose how many correct equations there should be
-  // const correctEquations = 
+  const correctEquations = getRandomInt(questionAmount);
+  console.log('correct equations:', correctEquations);
   // Set amount of wrong equations
-  // const wrongEquations = 
+  const wrongEquations = questionAmount - correctEquations;
+  console.log('wrong equations:', wrongEquations);
   // Loop through, multiply random numbers up to 9, push to array
   // for (let i = 0; i < correctEquations; i++) {
   //   firstNumber = 
@@ -102,6 +109,7 @@ function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
   countdownStart();
+  createEquations();
 }
 
 // Get the value from selected radio button
