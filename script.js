@@ -19,7 +19,7 @@ const penaltyTimeEl = document.querySelector('.penalty-time');
 const playAgainBtn = document.querySelector('.play-again');
 
 // Equations
-let questionAmount = 0
+let questionAmount = 0;
 let equationsArray = [];
 let playerGuessArray = [];
 let bestScoreArray = [];
@@ -37,7 +37,6 @@ let baseTime = 0;
 let penaltyTime = 0;
 let finalTime = 0;
 let finalTimeDisplay = '0.0';
-
 
 // Scroll
 let valueY = 0;
@@ -59,7 +58,7 @@ function getSavedBestScores() {
       { questions: 10, bestScore: finalTimeDisplay },
       { questions: 25, bestScore: finalTimeDisplay },
       { questions: 50, bestScore: finalTimeDisplay },
-      { questions: 99, bestScore: finalTimeDisplay },  
+      { questions: 99, bestScore: finalTimeDisplay },
     ];
     localStorage.setItem('bestScores', JSON.stringify(bestScoreArray));
   }
@@ -68,7 +67,7 @@ function getSavedBestScores() {
 
 // Update Best Score Array
 function updateBestScore() {
- bestScoreArray.forEach((score, index) => {
+  bestScoreArray.forEach((score, index) => {
     // Select correct Best Score to update
     if (questionAmount == score.questions) {
       // Return Best Score as number with one decimal
@@ -124,7 +123,6 @@ function scoresToDOM() {
 function checkTime() {
   console.log(timePlayed);
   if (playerGuessArray.length == questionAmount) {
-    console.log('player guess array:', playerGuessArray);
     clearInterval(timer);
     // Check for wrong guess, add penaltyTime
     equationsArray.forEach((equation, index) => {
@@ -166,7 +164,6 @@ function select(guessedTrue) {
   return guessedTrue ? playerGuessArray.push('true') : playerGuessArray.push('false');
 }
 
-
 // Displays Game Page
 function showGamePage() {
   gamePage.hidden = false;
@@ -186,7 +183,7 @@ function createEquations() {
   // Set amount of wrong equations
   const wrongEquations = questionAmount - correctEquations;
   console.log('wrong equations:', wrongEquations);
-  // Loop through, multiply random numbers up to 9, push to array
+  // Loop through for each correct equation, multiply random numbers up to 9, push to array
   for (let i = 0; i < correctEquations; i++) {
     firstNumber = getRandomInt(9);
     secondNumber = getRandomInt(9);
@@ -195,7 +192,7 @@ function createEquations() {
     equationObject = { value: equation, evaluated: 'true' };
     equationsArray.push(equationObject);
   }
-  // Loop through, mess with the equation results, push to array
+  // Loop through for each wrong equation, mess with the equation results, push to array
   for (let i = 0; i < wrongEquations; i++) {
     firstNumber = getRandomInt(9);
     secondNumber = getRandomInt(9);
@@ -203,7 +200,7 @@ function createEquations() {
     wrongFormat[0] = `${firstNumber} x ${secondNumber + 1} = ${equationValue}`;
     wrongFormat[1] = `${firstNumber} x ${secondNumber} = ${equationValue - 1}`;
     wrongFormat[2] = `${firstNumber + 1} x ${secondNumber} = ${equationValue}`;
-    const formatChoice = getRandomInt(3);
+    const formatChoice = getRandomInt(2);
     const equation = wrongFormat[formatChoice];
     equationObject = { value: equation, evaluated: 'false' };
     equationsArray.push(equationObject);
